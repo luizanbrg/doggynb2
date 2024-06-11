@@ -5,9 +5,8 @@ class BookingsController < ApplicationController
   end
 
   def show
-raise
-    @booking = current_user.booking.find(params[:id])
+    @booking = Booking.where(user_id:current_user)
+
   end
 
 end
-
