@@ -7,3 +7,29 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require 'faker'
+
+
+3.times do
+  Dog.create!(
+    name: Faker::Creature::Dog.name,
+    city: Faker::Address.city,
+    description: Faker::Lorem.sentence(word_count: 10),
+    breed: Faker::Creature::Dog.breed,
+    user_id: rand(1..3)
+  )
+end
+
+puts "3 dogs have been created."
+
+3.times do
+  User.create!(
+    email: Faker::Internet.email,
+    password: 'password', # Vous pouvez également utiliser Faker pour générer des mots de passe si nécessaire
+    name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    city: Faker::Address.city
+  )
+end
+
+puts "3 users have been created."
