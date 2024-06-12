@@ -77,3 +77,4 @@ end
 gem "devise"
 gem "faker"
 gem 'bundler', '~> 2.0'
+gem 'ffi', '< 1.17.0' 
