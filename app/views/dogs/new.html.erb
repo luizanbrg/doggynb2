@@ -15,6 +15,7 @@
   </div>
   <%= f.input :start_date, input_html: { style: 'width: 100px;' } %>
   <%= f.input :end_date, input_html: { style: 'width: 100px;' } %>
+  <%= f.input :image, as: :file, label: "Image of house" %>
   <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
 </div>
