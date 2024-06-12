@@ -1,9 +1,22 @@
-<h1><%= @dog.name %></h1>
-<p><%= @dog.description %></p>
-<%=  %>
+<section class="container-dog">
+<div class="card-product">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  <div class="card-product-infos">
+    <h2><%= @dog.name %></h2>
+    <p>Descritpion du chien : <%= @dog.description %></p>
+    <p>Race du chien : <%= @dog.breed %></p>
+    <p>Ville : <%= @dog.city %></p>
+  </div>
+</div>
+
+<div class="card-create-booking">
 <h2>Create a Booking</h2>
+<div class="card-create-infos">
 <%= simple_form_for([@dog, @booking], url: dog_bookings_path(@dog)) do |f| %>
   <%= f.input :start_date %>
   <%= f.input :end_date %>
   <%= f.submit 'Create Booking' %>
 <% end %>
+</div>
+</div>
+</section>
