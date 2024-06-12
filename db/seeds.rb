@@ -9,6 +9,18 @@
 #   end
 require 'faker'
 
+3.times do
+  User.create!(
+    email: Faker::Internet.email,
+    password: 'password', # Vous pouvez également utiliser Faker pour générer des mots de passe si nécessaire
+    name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    city: Faker::Address.city
+  )
+end
+
+puts "3 users have been created."
+
 
 3.times do
   Dog.create!(
@@ -21,15 +33,3 @@ require 'faker'
 end
 
 puts "3 dogs have been created."
-
-3.times do
-  User.create!(
-    email: Faker::Internet.email,
-    password: 'password', # Vous pouvez également utiliser Faker pour générer des mots de passe si nécessaire
-    name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    city: Faker::Address.city
-  )
-end
-
-puts "3 users have been created."
