@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
-  before_action :authenticate_user!, only: [:show]
+  before_action :authenticate_user!, only: [:show, :index]
   def index
-    @bookings = current_user.bookings
+   @bookings = Booking.where(user_id:current_user)
   end
 
   def show
