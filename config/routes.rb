@@ -10,6 +10,7 @@ resources :dogs do
   resources :bookings, only: [:create]
 end
 resources :bookings, except: [:create]
+
   # Defines the root path route ("/")
   root "pages#home"
 end

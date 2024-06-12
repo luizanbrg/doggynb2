@@ -1,4 +1,5 @@
 class DogsController < ApplicationController
+    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   def index
     @dogs = Dog.all
   end
@@ -14,6 +15,12 @@ class DogsController < ApplicationController
 
   def create
     @dog = Dog.new(dog_params)
+    @dog.user = current_user
+    if @dog.save
+     redirect_to dog_path(@dog)
+    else
+      render 'dogs/new', status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -25,7 +32,7 @@ class DogsController < ApplicationController
     @dog.update(dog_params)
   end
 
-  def delete
+  def destroy
     @dog = Dog.find(params[:id])
     @dog.destroy
   end
