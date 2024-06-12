@@ -1,1 +1,17 @@
-<h1>Résumer des réservations</h1>
+
+<h1 class="d-flex justify-content-center my-2 pb-2" >Résumé de la réservation</h1>
+
+<div class="container">
+  <div class="card-product">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+    <div class="card-product-infos">
+      <h2 class="d-flex justify-content-center">Détails</h2>
+      <p>Date de démarrage : <strong><%= @booking.start_date %></strong></p>
+      <p>Date de fin : <strong><%= @booking.end_date %></strong></p>
+      <p>Nom du chien : <strong><%= @booking.dog.name %></strong></p>
+      <p>Race du chien : <strong><%= @booking.dog.breed %></strong></p>
+      <p>Ville du chien : <strong><%= @booking.dog.city %></strong></p>
+    </div>
+  </div>
+</div>
+
