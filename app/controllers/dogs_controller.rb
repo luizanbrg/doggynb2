@@ -1,7 +1,12 @@
 class DogsController < ApplicationController
-    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   def index
-    @dogs = Dog.all
+    if params[:query].present?
+      @dogs = Dog.where('name ILIKE ?', "%#{params[:query]}%")
+    else
+      @dogs = []
+    end
+    @all_dogs = Dog.all
   end
 
   def show
@@ -39,7 +44,7 @@ class DogsController < ApplicationController
 
 private
 
-def dog_params
-  params.require(:dog).permit(:name, :description, :breed, :city, :start_date, :end_date)
-end
+  def dog_params
+   params.require(:dog).permit(:name, :description, :breed, :city, :start_date, :end_date)
+  end
 end
