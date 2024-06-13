@@ -1,9 +1,8 @@
-
 <h1 class="d-flex justify-content-center my-2 pb-2" >Résumé de la réservation</h1>
 
 <div class="container">
   <div class="card-product">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+    <%= cl_image_tag @dog.photo.key, height: 300, width: 400, crop: :fill %>
     <div class="card-product-infos">
       <h2 class="d-flex justify-content-center">Détails</h2>
       <p>Date de démarrage : <strong><%= @booking.start_date %></strong></p>
@@ -14,4 +13,3 @@
     </div>
   </div>
 </div>
-
