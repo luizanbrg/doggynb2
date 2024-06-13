@@ -5,8 +5,8 @@ class BookingsController < ApplicationController
   end
 
   def show
-    # @booking = Booking.where(user_id:current_user)
     @booking = Booking.find(params[:id])
+    @dog = @booking.dog
   end
 
   def create
