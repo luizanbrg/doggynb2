@@ -1,6 +1,8 @@
+
 <section class="container-dog">
 <div class="card-product">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  <%= cl_image_tag @dog.photo.key, height: 300, width: 400, crop: :fill %>
+  <%#= image_tag url_for(@dog.photo) %>
   <div class="card-product-infos">
     <h2><%= @dog.name %></h2>
     <p>Descritpion du chien : <%= @dog.description %></p>
