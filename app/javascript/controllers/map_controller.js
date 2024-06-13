@@ -1,3 +1,5 @@
+// app/javascript/controllers/map_controller.js
+
 import { Controller } from "@hotwired/stimulus";
 import mapboxgl from "mapbox-gl";
 
@@ -9,7 +11,8 @@ export default class extends Controller {
   };
 
   connect() {
-    mapboxgl.accessToken = "MAPBOX_API_KEY";
+    console.log("Mapbox API Key:", this.apiKeyValue);
+    mapboxgl.accessToken = this.apiKeyValue; // Certifique-se de usar o valor correto
 
     this.map = new mapboxgl.Map({
       container: this.element,
@@ -25,6 +28,7 @@ export default class extends Controller {
       new mapboxgl.Marker().setLngLat([marker.lng, marker.lat]).addTo(this.map);
     });
   }
+
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds();
     this.markersValue.forEach((marker) =>
