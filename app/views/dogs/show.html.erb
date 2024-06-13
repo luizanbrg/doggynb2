@@ -22,4 +22,5 @@
 </div>
 </section>
 
+<%= link_to "Modifier le chien", edit_dog_path(@dog), class: "btn btn-ghost" %>
 <%= link_to "Supprimer le chien", dog_path(@dog), data: {turbo_method: :delete, turbo_confirm: "Etes-vous sur ?"}, class: "btn btn-ghost" %>
