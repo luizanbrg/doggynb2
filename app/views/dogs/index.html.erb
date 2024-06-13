@@ -38,9 +38,16 @@
     <% if @all_dogs.any? %>
       <% @all_dogs.each do |dog| %>
         <div class="card">
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('boubou.jpeg') %>);">
-            <%= link_to dog.name, dog_path(dog), class: "card-title" %>
-          </div>
+          <% if dog.photo.present? %>
+            <div class="card-category"
+              style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path(dog.photo.key, height: 300, crop: :fill) %>')">
+              <%= link_to dog.name, dog_path(dog), class: "card-title" %>
+            </div>
+          <% else %>
+            <div class="card-category">
+              <%= link_to dog.name, dog_path(dog), class: "card-title" %>
+            </div>
+          <% end %>
           <div class="card-description">
             <p><strong>Breed:</strong> <%= dog.breed %></p>
             <p><strong>City:</strong> <%= dog.city %></p>
