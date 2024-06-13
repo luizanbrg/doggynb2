@@ -7,6 +7,13 @@ class DogsController < ApplicationController
       @dogs = []
     end
     @all_dogs = Dog.all
+    @mapbox_access_token = ENV['MAPBOX_ACCESS_TOKEN']
+    @markers = @all_dogs.geocoded.map do |flat|
+    {
+      lat: flat.latitude,
+      lng: flat.longitude
+    }
+  end
   end
 
   def show
