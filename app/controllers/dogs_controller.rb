@@ -22,7 +22,7 @@ class DogsController < ApplicationController
     @dog = Dog.new(dog_params)
     @dog.user = current_user
     if @dog.save
-     redirect_to dog_path(@dog)
+      redirect_to dog_path(@dog)
     else
       render 'dogs/new', status: :unprocessable_entity
     end
@@ -44,7 +44,8 @@ class DogsController < ApplicationController
 
 private
 
-  def dog_params
-   params.require(:dog).permit(:name, :description, :breed, :city, :start_date, :end_date)
-  end
+def dog_params
+  params.require(:dog).permit(:name, :description, :breed, :city, :start_date, :end_date, :photo)
+end
+
 end
