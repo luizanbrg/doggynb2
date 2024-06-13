@@ -4,6 +4,7 @@
   height: 100%;
   padding-left: 5%;
   padding-right: 5%;
+  margin-bottom: 15px;
 }
 
 /* See a dog */
@@ -69,7 +70,8 @@
   font-weight: lighter;
   opacity: 0.6;
   transition: opacity 0.3s ease;
-  margin: 30px;
+  margin-top: 15px;
+  margin-bottom: 0px;
 }
 
 .btn-ghost:hover {
