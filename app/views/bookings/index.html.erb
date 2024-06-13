@@ -1,17 +1,19 @@
-<h1>Historique de reservation</h1>
+<h1 class="d-flex justify-content-center my-2 pb-2"><strong>Historique de reservation</strong></h1>
 
-  <div>
-    <% if @bookings.any? %>
-    <ul>
-      <% @bookings.each do |booking| %>
-        <li>Date de la réservation : <%= booking.booking_date %> </li>
-        <li>Début de la reservation: <%= booking.start_date %></li>
-        <li>Fin de la réservation: <%= booking.end_date %></li>
-        <li>nom du chien: <%= booking.dog.name %>
-        <% end %>
-        </ul>
-        <% else %>
-        <p> Vous n'avez aucune reservation</p>
-      <% end %>
-
-  </div>
+ <div class="bookings-container">
+  <% if @bookings.any? %>
+    <% @bookings.each do |booking| %>
+      <div class="card mb-3" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><strong>Réservation pour <%= booking.dog.name %></strong></h5>
+          <p class="card-text">
+            Début de la réservation: <%= booking.start_date %><br>
+            Fin de la réservation: <%= booking.end_date %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>Vous n'avez aucune réservation</p>
+  <% end %>
+</div>

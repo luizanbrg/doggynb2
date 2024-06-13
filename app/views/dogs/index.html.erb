@@ -1,18 +1,55 @@
-<h1 style="text-align: center;">Liste des chiens disponibles</h1>
+<h1 style="text-align: center;"> Rechercher un toutou par son nom</h1>
+<div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: dogs_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Quel chien cherchez-vous ?" %>
+      <%= submit_tag "Rechercher", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<% if params[:query].present? %>
+  <div class="container-doggy-search">
+    <div class="cards">
+      <% if @dogs.any? %>
+        <% @dogs.each do |dog| %>
+          <div class="card">
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('boubou.jpeg') %>);">
+              <%= link_to dog.name, dog_path(dog), class: "card-title" %>
+            </div>
+            <div class="card-description">
+              <p><strong>Breed:</strong> <%= dog.breed %></p>
+              <p><strong>City:</strong> <%= dog.city %></p>
+              <p><strong>Description:</strong> <%= dog.description %></p>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p>Aucun chien trouvé correspondant à votre recherche.</p>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<h1 style="text-align: center;"> Liste des chiens disponibles</h1>
 
 <div class="container-doggy">
   <div class="cards">
-    <% @dogs.each do |dog| %>
-      <div class="card">
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('boubou.jpeg') %>);">
-          <%= link_to dog.name, dog_path(dog), class: "card-title" %>
+    <% if @all_dogs.any? %>
+      <% @all_dogs.each do |dog| %>
+        <div class="card">
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('boubou.jpeg') %>);">
+            <%= link_to dog.name, dog_path(dog), class: "card-title" %>
+          </div>
+          <div class="card-description">
+            <p><strong>Breed:</strong> <%= dog.breed %></p>
+            <p><strong>City:</strong> <%= dog.city %></p>
+            <p><strong>Description:</strong> <%= dog.description %></p>
+          </div>
         </div>
-        <div class="card-description">
-          <p><strong>Breed:</strong> <%= dog.breed %></p>
-          <p><strong>City:</strong> <%= dog.city %></p>
-          <p><strong>Description:</strong> <%= dog.description %></p>
-        </div>
-      </div>
+      <% end %>
+    <% else %>
+      <p>Aucun chien trouvé correspondant à votre recherche.</p>
     <% end %>
   </div>
 </div>
