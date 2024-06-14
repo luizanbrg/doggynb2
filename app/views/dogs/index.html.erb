@@ -37,7 +37,7 @@
   <div class="cards">
     <% if @all_dogs.any? %>
       <% @all_dogs.each do |dog| %>
-        <div class="card">
+        <div class="card card-hover-bigger">
           <% if dog.photo.present? %>
             <div class="card-category"
               style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path(dog.photo.key, height: 300, crop: :fill) %>')">
@@ -51,7 +51,6 @@
           <div class="card-description">
             <p><strong>Breed:</strong> <%= dog.breed %></p>
             <p><strong>City:</strong> <%= dog.city %></p>
-            <p><strong>Description:</strong> <%= dog.description %></p>
           </div>
         </div>
 
@@ -61,7 +60,10 @@
       <p>Aucun chien trouvé correspondant à votre recherche.</p>
     <% end %>
   </div>
-  <div class="p-4">
+  <div class="my-2" style="text-align: center";>
+  <h1> Carte des chiens disponibles près de chez vous</h1>
+  </div>
+  <div class="px-5 py-2">
      <div id="map" style="width: 100%; height: 300px;"
      data-controller="map"
      data-map-markers-value="<%= @markers.to_json %>"
