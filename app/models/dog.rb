@@ -1,4 +1,10 @@
 class Dog < ApplicationRecord
+  include Geocoder
+
+
+  geocoded_by :city
+   after_validation :geocode, if: :will_save_change_to_city?
+
   belongs_to :user
   has_many :bookings
   has_many :users, through: :bookings, dependent: :destroy
